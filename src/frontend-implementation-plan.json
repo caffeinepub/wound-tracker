@@ -1,0 +1,226 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Wound Tracker Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create image upload interface for wound photographs",
+      "acceptanceCriteria": [
+        "User can upload wound images",
+        "Uploaded image is displayed in the interface",
+        "Interface supports common image formats (JPG, PNG)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ImageUpload.tsx",
+          "operation": "create",
+          "description": "Create image upload component that accepts JPG and PNG files. Use the blob-storage component ExternalBlob.fromBytes() to handle file uploads with progress tracking using withUploadProgress(). Display the uploaded image preview. Verify the blob-storage component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useImageUpload.ts",
+          "operation": "create",
+          "description": "Create hook to manage image upload state, file validation (JPG, PNG formats), and ExternalBlob conversion from uploaded files."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement wound area measurement with clinical interpretation",
+      "acceptanceCriteria": [
+        "System calculates wound area in pixels from uploaded image",
+        "Area measurement is displayed to user",
+        "Interpretation guidance is shown (decreasing = good healing, increasing = delayed healing or infection)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/woundAnalysis.ts",
+          "operation": "create",
+          "description": "Create utility module for client-side wound area calculation using canvas-based pixel analysis. Calculate total wound area in pixels from the uploaded image data. Include helper functions for image processing and wound region detection."
+        },
+        {
+          "path": "frontend/src/components/MetricDisplay.tsx",
+          "operation": "create",
+          "description": "Create reusable component to display individual wound metrics with value, label, and clinical interpretation text. Style with medical-appropriate green and white theme. Include visual indicators for metric status."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Calculate wound perimeter and smoothness with clinical interpretation",
+      "acceptanceCriteria": [
+        "System calculates wound perimeter from image",
+        "Smoothness metric is computed and displayed",
+        "Clinical interpretation is provided based on perimeter characteristics"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/woundAnalysis.ts",
+          "operation": "modify",
+          "description": "Add perimeter calculation function using edge detection and contour analysis. Include smoothness metric calculation by analyzing perimeter irregularities. Return both perimeter length and smoothness score."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Analyze wound shape regularity and circularity with healing interpretation",
+      "acceptanceCriteria": [
+        "Circularity score is calculated from wound shape",
+        "Shape regularity metric is displayed",
+        "Interpretation shows correlation between circularity and healing progress"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/woundAnalysis.ts",
+          "operation": "modify",
+          "description": "Add circularity calculation using the formula: circularity = (4 * π * area) / (perimeter²). Include shape regularity analysis based on contour analysis. Return normalized circularity score between 0 and 1."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Perform color composition analysis with clinical meanings for wound tissue assessment",
+      "acceptanceCriteria": [
+        "System analyzes color composition and calculates percentages of red, pink, yellow, and black",
+        "Each color percentage is displayed with its clinical meaning",
+        "Interpretation highlights whether color distribution indicates improvement or concern",
+        "Color composition is marked as a critical metric in the UI"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/colorAnalysis.ts",
+          "operation": "create",
+          "description": "Create color composition analysis utility that processes wound image pixels to calculate percentages of red (healthy granulation), pink (epithelialization), yellow (slough), and black (necrosis). Use HSV/RGB color space analysis to classify pixels into tissue type categories. Return percentage breakdown with clinical classifications."
+        },
+        {
+          "path": "frontend/src/components/ColorCompositionDisplay.tsx",
+          "operation": "create",
+          "description": "Create specialized component for displaying color composition results prominently as the highest priority metric. Show percentage breakdown with color-coded bars for red, pink, yellow, and black tissue types. Include clinical meaning labels for each color category and overall interpretation indicating improvement or concern based on color distribution."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Analyze wound texture smoothness indicating tissue recovery",
+      "acceptanceCriteria": [
+        "Texture smoothness metric is calculated from wound image",
+        "Results show whether texture is smooth or rough",
+        "Clinical interpretation links smooth texture to tissue recovery"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/textureAnalysis.ts",
+          "operation": "create",
+          "description": "Create texture analysis utility using statistical methods (variance, standard deviation of pixel intensities) or Local Binary Pattern analysis to measure texture smoothness. Return smoothness score normalized between 0 (rough) and 1 (smooth)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Detect wound edge sharpness with healing status interpretation",
+      "acceptanceCriteria": [
+        "Edge sharpness metric is calculated from wound boundaries",
+        "Results distinguish between sharp and fuzzy edges",
+        "Interpretation correlates edge sharpness with healing status or inflammation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/edgeAnalysis.ts",
+          "operation": "create",
+          "description": "Create edge sharpness detection utility using gradient magnitude analysis or Sobel/Canny edge detection. Calculate edge sharpness score by measuring boundary definition clarity. Return sharpness metric indicating whether edges are sharp (stabilized healing) or fuzzy (active inflammation)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Detect exudate and moisture with healing risk assessment",
+      "acceptanceCriteria": [
+        "System detects shiny or fluid regions in wound images",
+        "Moisture level assessment is displayed",
+        "Interpretation warns when excessive moisture indicates poor healing risk"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/moistureAnalysis.ts",
+          "operation": "create",
+          "description": "Create moisture detection utility that identifies shiny or glossy regions using specular highlight detection and brightness analysis. Calculate exudate level score based on detected moisture regions. Return moisture assessment with risk indicator for excessive wetness."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Create comprehensive results dashboard for all wound metrics",
+      "acceptanceCriteria": [
+        "All seven metrics are displayed in a unified dashboard view",
+        "Each metric shows its value and clinical interpretation",
+        "Visual indicators (colors, icons) help users quickly assess healing status",
+        "Dashboard provides an overall healing summary based on all metrics"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ResultsDashboard.tsx",
+          "operation": "create",
+          "description": "Create comprehensive dashboard component displaying all seven wound metrics: area, perimeter/smoothness, circularity, color composition, texture, edge sharpness, and exudate level. Integrate ColorCompositionDisplay component prominently as the highest priority metric. Use MetricDisplay components for other metrics. Include visual indicators (status colors, icons referencing frontend/public/assets/generated/metric-icons.dim_512x512.png) for quick assessment. Display overall healing status summary based on aggregated metric analysis. Apply medical green and white color scheme with clear typography."
+        },
+        {
+          "path": "frontend/src/hooks/useWoundAnalysis.ts",
+          "operation": "create",
+          "description": "Create hook that orchestrates all wound analysis utilities (woundAnalysis, colorAnalysis, textureAnalysis, edgeAnalysis, moistureAnalysis) and calls backend measureWound() method with computed metrics. Manage analysis state, loading, and error handling. Return computed metrics and overall assessment."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Implement wound tracking history with progress comparison",
+      "acceptanceCriteria": [
+        "Users can save multiple assessments for the same wound over time",
+        "Historical data shows trends in all seven metrics",
+        "Comparison view highlights improvements or deteriorations in healing"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/WoundHistory.tsx",
+          "operation": "create",
+          "description": "Create wound history component that fetches historical measurements using getAllMeasurements() backend method. Display list of past assessments with timestamps. Show trends for all seven metrics over time using line charts or trend indicators. Highlight improvements (decreasing area, increasing red/pink, etc.) and deteriorations (increasing area, yellow/black, etc.) with visual indicators."
+        },
+        {
+          "path": "frontend/src/components/ComparisonView.tsx",
+          "operation": "create",
+          "description": "Create comparison view component allowing users to select two wound assessments and view side-by-side metric comparisons. Display percentage changes for each metric with interpretation of whether change indicates improvement or concern. Include visual diff of wound images."
+        },
+        {
+          "path": "frontend/src/hooks/useMeasurementHistory.ts",
+          "operation": "create",
+          "description": "Create hook to manage wound measurement history. Fetch all measurements using getAllMeasurements(), handle deletion via deleteMeasurement(), and manage selected measurements for comparison. Include sorting and filtering capabilities."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Apply professional medical interface design with calming aesthetics",
+      "acceptanceCriteria": [
+        "Interface uses medical-appropriate green and white color palette",
+        "Typography ensures clinical data is easily readable",
+        "Layout hierarchy emphasizes most critical metrics",
+        "Design conveys professionalism and trustworthiness suitable for healthcare context"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global styles to implement medical-themed design system with calming green and white color palette. Define CSS custom properties for primary medical green, accent colors, and neutral whites/grays. Ensure typography uses clear, readable fonts with appropriate sizing for clinical data display. Set professional styling for medical interface elements."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Configure Tailwind theme with medical color palette (green primary, white backgrounds, gray accents). Define custom spacing, border radius, and shadows appropriate for healthcare UI. Ensure color composition and other critical metrics can be styled prominently."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Integrate main application components into App.tsx with organized layout structure. Include ImageUpload component for wound photograph submission, ResultsDashboard for displaying analysis results, and WoundHistory component for tracking progress. Add navigation or tab structure to organize upload/analysis and history views. Apply consistent medical theme throughout application layout. Wire reference image frontend/public/assets/generated/wound-reference.dim_400x300.png into appropriate UI context (e.g., help section or analysis guide)."
+        }
+      ]
+    }
+  ]
+}

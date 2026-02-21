@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Medical wound assessment application that analyzes wound images to track healing progress through multiple metrics including area, perimeter, shape regularity, color composition, texture, edge sharpness, and moisture appearance",
+  "architectural_notes": [
+    "Image processing pipeline required for wound analysis",
+    "Computer vision algorithms needed for area, perimeter, and shape calculations",
+    "Color segmentation for tissue type classification (red/pink/yellow/black)",
+    "Texture analysis for surface smoothness detection",
+    "Edge detection algorithms for boundary sharpness",
+    "Clinical interpretation mapping for healing assessment"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Medical wound reference illustration showing healthy granulation tissue in red tones (wound-reference.dim_400x300.png)\n- Icon set for seven wound metrics with medical styling: area, perimeter, shape, color, texture, edge, moisture (metric-icons.dim_512x512.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-image-upload-interface-that-accepts-wound-photographs-and-displays-the-uploaded-image-for-analysis",
+      "title": "Create image upload interface that accepts wound photographs and displays the uploaded image for analysis",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-wound-area-measurement-that-calculates-total-wound-size-in-pixels-and-displays-the-result-with-interpretation-decreasing-area-indicates-good-healing-increasing-area-indicates-delayed-healing-or-infection",
+      "title": "Implement wound area measurement that calculates total wound size in pixels and displays the result with interpretation (decreasing area indicates good healing, increasing area indicates delayed healing or infection)",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-calculate-wound-perimeter-and-analyze-smoothness-displaying-results-with-clinical-interpretation-smooth-smaller-perimeter-indicates-healing-large-or-irregular-perimeter-indicates-inflammation",
+      "title": "Calculate wound perimeter and analyze smoothness, displaying results with clinical interpretation (smooth, smaller perimeter indicates healing; large or irregular perimeter indicates inflammation)",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-analyze-wound-shape-regularity-and-circularity-displaying-metrics-with-interpretation-high-circularity-indicates-better-contraction-irregular-shape-indicates-tissue-damage-or-slow-healing",
+      "title": "Analyze wound shape regularity and circularity, displaying metrics with interpretation (high circularity indicates better contraction; irregular shape indicates tissue damage or slow healing)",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-perform-color-composition-analysis-of-wound-tissue-calculating-percentages-of-red-pink-yellow-and-black-colors-with-clinical-meanings-red-healthy-granulation-tissue-good-healing-pink-epithelialization-new-skin-formation-yellow-slough-dead-tissue-slow-healing-black-necrosis-severe-damage-display-results-with-interpretation-that-increase-in-red-pink-indicates-improvement-and-increase-in-yellow-black-indicates-concern",
+      "title": "Perform color composition analysis of wound tissue, calculating percentages of red, pink, yellow, and black colors with clinical meanings: red = healthy granulation tissue (good healing), pink = epithelialization (new skin formation), yellow = slough/dead tissue (slow healing), black = necrosis (severe damage). Display results with interpretation that increase in red/pink indicates improvement and increase in yellow/black indicates concern.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-analyze-wound-texture-smoothness-and-display-results-with-interpretation-smooth-texture-indicates-tissue-recovery",
+      "title": "Analyze wound texture smoothness and display results with interpretation (smooth texture indicates tissue recovery)",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-detect-wound-edge-sharpness-and-boundary-definition-displaying-results-with-interpretation-sharp-edges-indicate-stabilized-healing-fuzzy-edges-indicate-active-inflammation",
+      "title": "Detect wound edge sharpness and boundary definition, displaying results with interpretation (sharp edges indicate stabilized healing; fuzzy edges indicate active inflammation)",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-detect-exudate-and-moisture-appearance-by-identifying-shiny-or-fluid-regions-in-the-wound-image-displaying-results-with-interpretation-too-wet-or-glossy-indicates-risk-of-poor-healing",
+      "title": "Detect exudate and moisture appearance by identifying shiny or fluid regions in the wound image, displaying results with interpretation (too wet or glossy indicates risk of poor healing)",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-comprehensive-results-dashboard-that-displays-all-seven-wound-metrics-together-with-visual-indicators-clinical-interpretations-and-overall-healing-status-summary",
+      "title": "Create a comprehensive results dashboard that displays all seven wound metrics together with visual indicators, clinical interpretations, and overall healing status summary",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-wound-tracking-history-that-allows-users-to-upload-multiple-wound-images-over-time-and-compare-measurements-to-track-healing-progress",
+      "title": "Implement wound tracking history that allows users to upload multiple wound images over time and compare measurements to track healing progress",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-clean-professional-medical-interface-design-with-a-calming-green-and-white-color-scheme-clear-typography-optimized-for-readability-of-clinical-data-and-organized-layout-that-prioritizes-critical-metrics-like-color-composition",
+      "title": "Apply a clean, professional medical interface design with a calming green and white color scheme, clear typography optimized for readability of clinical data, and organized layout that prioritizes critical metrics like color composition",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Measure wound area in pixels or mm²",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Calculate wound perimeter and detect smoothness",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Analyze shape regularity and circularity metrics",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Perform color composition analysis (red, pink, yellow, black percentages) with clinical interpretations",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Analyze wound texture smoothness",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Detect edge sharpness and boundary definition",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Detect exudate and moisture appearance (shiny/fluid regions)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Wound Tracker",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

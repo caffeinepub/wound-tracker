@@ -1,0 +1,220 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-image-upload-interface-that-accepts-wound-photographs-and-displays-the-uploaded-image-for-analysis",
+      "featureTitle": "Create image upload interface that accepts wound photographs and displays the uploaded image for analysis",
+      "files": [
+        "frontend/src/components/ImageUpload.tsx",
+        "frontend/src/hooks/useImageUpload.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-wound-area-measurement-that-calculates-total-wound-size-in-pixels-and-displays-the-result-with-interpretation-decreasing-area-indicates-good-healing-increasing-area-indicates-delayed-healing-or-infection",
+      "featureTitle": "Implement wound area measurement that calculates total wound size in pixels and displays the result with interpretation (decreasing area indicates good healing, increasing area indicates delayed healing or infection)",
+      "files": [
+        "frontend/src/components/MetricDisplay.tsx",
+        "frontend/src/utils/woundAnalysis.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-calculate-wound-perimeter-and-analyze-smoothness-displaying-results-with-clinical-interpretation-smooth-smaller-perimeter-indicates-healing-large-or-irregular-perimeter-indicates-inflammation",
+      "featureTitle": "Calculate wound perimeter and analyze smoothness, displaying results with clinical interpretation (smooth, smaller perimeter indicates healing; large or irregular perimeter indicates inflammation)",
+      "files": [
+        "frontend/src/utils/woundAnalysis.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-analyze-wound-shape-regularity-and-circularity-displaying-metrics-with-interpretation-high-circularity-indicates-better-contraction-irregular-shape-indicates-tissue-damage-or-slow-healing",
+      "featureTitle": "Analyze wound shape regularity and circularity, displaying metrics with interpretation (high circularity indicates better contraction; irregular shape indicates tissue damage or slow healing)",
+      "files": [
+        "frontend/src/utils/woundAnalysis.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-perform-color-composition-analysis-of-wound-tissue-calculating-percentages-of-red-pink-yellow-and-black-colors-with-clinical-meanings-red-healthy-granulation-tissue-good-healing-pink-epithelialization-new-skin-formation-yellow-slough-dead-tissue-slow-healing-black-necrosis-severe-damage-display-results-with-interpretation-that-increase-in-red-pink-indicates-improvement-and-increase-in-yellow-black-indicates-concern",
+      "featureTitle": "Perform color composition analysis of wound tissue, calculating percentages of red, pink, yellow, and black colors with clinical meanings: red = healthy granulation tissue (good healing), pink = epithelialization (new skin formation), yellow = slough/dead tissue (slow healing), black = necrosis (severe damage). Display results with interpretation that increase in red/pink indicates improvement and increase in yellow/black indicates concern.",
+      "files": [
+        "frontend/src/components/ColorCompositionDisplay.tsx",
+        "frontend/src/utils/colorAnalysis.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-analyze-wound-texture-smoothness-and-display-results-with-interpretation-smooth-texture-indicates-tissue-recovery",
+      "featureTitle": "Analyze wound texture smoothness and display results with interpretation (smooth texture indicates tissue recovery)",
+      "files": [
+        "frontend/src/utils/textureAnalysis.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-detect-wound-edge-sharpness-and-boundary-definition-displaying-results-with-interpretation-sharp-edges-indicate-stabilized-healing-fuzzy-edges-indicate-active-inflammation",
+      "featureTitle": "Detect wound edge sharpness and boundary definition, displaying results with interpretation (sharp edges indicate stabilized healing; fuzzy edges indicate active inflammation)",
+      "files": [
+        "frontend/src/utils/edgeAnalysis.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-detect-exudate-and-moisture-appearance-by-identifying-shiny-or-fluid-regions-in-the-wound-image-displaying-results-with-interpretation-too-wet-or-glossy-indicates-risk-of-poor-healing",
+      "featureTitle": "Detect exudate and moisture appearance by identifying shiny or fluid regions in the wound image, displaying results with interpretation (too wet or glossy indicates risk of poor healing)",
+      "files": [
+        "frontend/src/utils/moistureAnalysis.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-comprehensive-results-dashboard-that-displays-all-seven-wound-metrics-together-with-visual-indicators-clinical-interpretations-and-overall-healing-status-summary",
+      "featureTitle": "Create a comprehensive results dashboard that displays all seven wound metrics together with visual indicators, clinical interpretations, and overall healing status summary",
+      "files": [
+        "frontend/src/components/ResultsDashboard.tsx",
+        "frontend/src/hooks/useWoundAnalysis.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-wound-tracking-history-that-allows-users-to-upload-multiple-wound-images-over-time-and-compare-measurements-to-track-healing-progress",
+      "featureTitle": "Implement wound tracking history that allows users to upload multiple wound images over time and compare measurements to track healing progress",
+      "files": [
+        "frontend/src/components/WoundHistory.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-clean-professional-medical-interface-design-with-a-calming-green-and-white-color-scheme-clear-typography-optimized-for-readability-of-clinical-data-and-organized-layout-that-prioritizes-critical-metrics-like-color-composition",
+      "featureTitle": "Apply a clean, professional medical interface design with a calming green and white color scheme, clear typography optimized for readability of clinical data, and organized layout that prioritizes critical metrics like color composition",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "frontend/src/index.css": "Global styles with medical-themed OKLCH color system featuring calming green and white palette, custom medical color utilities for tissue types (red, pink, yellow, black), and professional healthcare UI styling.",
+  "frontend/tailwind.config.js": "Tailwind configuration with medical color palette, custom fonts (Inter, Poppins), extended spacing and shadows for healthcare UI, and medical-specific design tokens.",
+  "frontend/src/App.tsx": "Main application component with tabbed navigation for wound analysis, history tracking, and clinical guide; includes medical-themed header and footer with proper attribution.",
+  "frontend/src/types/wound.ts": "TypeScript interfaces defining wound analysis result structure with properly typed Uint8Array<ArrayBuffer> for image blob and color composition data types.",
+  "frontend/src/utils/woundAnalysis.ts": "Client-side wound metrics calculation using canvas-based image processing for area, perimeter, and circularity measurements.",
+  "frontend/src/utils/colorAnalysis.ts": "Color composition analysis utility that classifies wound tissue pixels into red (healthy granulation), pink (epithelialization), yellow (slough), and black (necrosis) categories using HSV color space.",
+  "frontend/src/utils/textureAnalysis.ts": "Texture smoothness analysis using local variance calculation to measure wound surface characteristics.",
+  "frontend/src/utils/edgeAnalysis.ts": "Edge sharpness detection using Sobel operators to assess wound boundary definition and healing status.",
+  "frontend/src/utils/moistureAnalysis.ts": "Moisture and exudate detection by identifying specular highlights and glossy regions in wound images.",
+  "frontend/src/hooks/useImageUpload.ts": "Custom hook managing image file upload, validation (JPG/PNG), ExternalBlob conversion with proper type casting to Uint8Array<ArrayBuffer>, and upload progress tracking.",
+  "frontend/src/hooks/useWoundAnalysis.ts": "Custom hook orchestrating all wound analysis utilities to process uploaded images with properly typed Uint8Array<ArrayBuffer> and compute comprehensive metrics.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for backend integration including fetching all measurements, saving new wound assessments, and deleting historical records.",
+  "frontend/src/components/ImageUpload.tsx": "Image upload component with drag-and-drop support, preview display, properly typed state for image bytes, and analysis trigger functionality.",
+  "frontend/src/components/MetricDisplay.tsx": "Reusable metric card component displaying individual wound measurements with clinical interpretation and status indicators.",
+  "frontend/src/components/ColorCompositionDisplay.tsx": "Prominent color composition display component showing tissue type percentages with color-coded bars and clinical meanings as the highest priority metric.",
+  "frontend/src/components/ResultsDashboard.tsx": "Comprehensive results dashboard displaying all seven wound metrics with proper type handling for ExternalBlob creation from Uint8Array buffer, overall assessment, and save functionality with toast notifications.",
+  "frontend/src/components/WoundHistory.tsx": "Historical measurements view showing past wound assessments with trend indicators, deletion capability, and sortable timeline."
+}
